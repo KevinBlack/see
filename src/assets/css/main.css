@@ -1,0 +1,79 @@
+body,
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+body {
+  font-size: 0.86666667rem;
+  font-family: '微软雅黑';
+  color: #738797;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+a:hover {
+  color: #ffffff;
+}
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.ico_logo {
+  filter: invert(100%);
+}
+.btn-outline-success {
+  color: #B6B6B6;
+  background-color: transparent;
+  background-image: none;
+  border-color: #B6B6B6;
+}
+.btn-outline-success:hover {
+  color: #ffffff;
+  background-color: #454c53;
+  border-color: #454c53;
+}
+.con1 {
+  margin-top: 20px;
+}
+.car_title {
+  text-shadow: 2px 2px 2px #000000;
+  font-size: 2rem;
+}
+.car_alt {
+  text-shadow: 2px 2px 2px #000000;
+}
+.bod-rad {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+/*轮播改渐隐始*/
+.carousel-fade .carousel-inner .carousel-item {
+  opacity: 0;
+  -webkit-transition-property: opacity;
+  -moz-transition-property: opacity;
+  -ms-transition-property: opacity;
+  -o-transition-property: opacity;
+  transition-property: opacity;
+  transition-duration: 1s;
+}
+.carousel-fade .carousel-inner .active {
+  opacity: 1;
+}
+.carousel-fade .carousel-inner .active.left,
+.carousel-fade .carousel-inner .active.right {
+  left: 0;
+  opacity: 0;
+}
+.carousel-fade .carousel-inner .carousel-item-next.carousel-item-left,
+.carousel-fade .carousel-inner .carousel-item-prev.carousel-item-right {
+  opacity: 1;
+}
+/*轮播改渐隐终*/
+
+.pull-right{ display: inline-block; float: right !important;}
