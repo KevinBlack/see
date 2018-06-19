@@ -19,10 +19,10 @@ let router = new VueRouter({
       component: mzhf
     },
     //重定向
-    /*{
+    {
       path:'*',
       redirect:'/home'
-    }*/
+    }
   ]
 })
 

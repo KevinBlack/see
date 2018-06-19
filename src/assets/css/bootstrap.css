@@ -575,7 +575,7 @@ pre code {
 
 @media (min-width: 992px) {
   .container {
-    max-width: 960px;
+    max-width: 1220px;
   }
 }
 
@@ -6162,7 +6162,9 @@ button.bg-light:focus {
 }
 
 .bg-dark {
-  background-color: #343a40 !important;
+  background-color: #000000 !important;
+  height: 100px;
+  line-height: 100px;/*修改背景色#343a40为黑色，增加高度*/
 }
 
 a.bg-dark:hover, a.bg-dark:focus,

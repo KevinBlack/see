@@ -20,12 +20,37 @@
         </div>
       </nav>
     </div>
+    <div class="nav-sub">
+      <div class="nav-sub-wrapper">
+        <div class="container">
+          <ul class="nav-list">
+            <li><a href="javascript:;">首页</a></li>
+            <li><a href="javascript:;">手机</a></li>
+            <li><a href="javascript:;">“足迹系列”手感膜</a></li>
+            <li class="active"><a href="javascript:;">官方配件</a></li>
+            <li><a href="javascript:;">周边产品</a></li>
+            <li><a href="javascript:;">第三方配件</a></li>
+            <li><a href="javascript:;">全部商品</a></li>
+            <li><a href="javascript:;">服务</a></li>
+          </ul>
+          <search-bar class="nav-search">
+            <div class="cearch-bar">
+              <form action class="search-form ng-untouched ng-pristine ng-valid">
+                <input type="text" autocomplete="off" maxlength="30" class="search-box ng-untouched ng-pristine ng-invalid" />
+                <button class="iconfont search-btn" type="submit">&#xe6ac;</button>
+              </form>
+            </div>
+          </search-bar>
+        </div>
+      </div>
+    </div>
     <router-view/>
   </div>
 </template>
 
 <script>
 import navBtn from '@/lib/nav'
+
 
 export default {
   data () {
