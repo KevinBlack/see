@@ -113,6 +113,7 @@
     border-radius: 50%;
     padding: 2px;
     display: block;
+    box-sizing: content-box;
 }
 .sku-box .item .colors-list>li a.active{
     box-shadow: inset 0 0 0 1px #b2b2b2;

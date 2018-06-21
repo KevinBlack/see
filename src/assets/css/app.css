@@ -1,6 +1,17 @@
 @import "bootstrap.css";
-@import "globe.css";
-@import "main.css";
+/*@import "account.css";
+@import "address.css";
+@import "address-pop.css";
+@import "cart.css";
+@import "checkout.css";
+@import "item.css";
+@import "order.css";
+@import "payment.css";
+@import "prompt.css";*/
 @import "goodsList.css";
+@import "reset.css";
 @import "header.css";
 @import "../font/search/iconfont.css";
+
+
+/*总 css 文件入口，可以在这里将所有用到的 css 文件一并引入，但也有一种说法是这样可能消耗性能，应该加载某个页面时再载入相关样式，即把样式写在对应的 vue 页面的 style 标签中。*/
