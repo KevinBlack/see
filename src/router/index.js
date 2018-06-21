@@ -13,6 +13,10 @@ let router = new VueRouter({
       path: '/home',
       component: home,
       alias:'/index'//设置别名，可以使默认呈现为首页（否则必须点击导航才能到首页）
+      /*children:[{
+        path:'',
+        component:''
+        }]*/
     },
     {
       path:'/mzhf',

@@ -1,14 +1,8 @@
-@charset "utf-8";
 .nav-global{
 	height: 100px;
 	background-color: #000;
 }
-.container{
-	height: 100%;
-	width: 1220px;
-	margin: 0 auto;
-}
-/*logo
+/*logo*/
 .nav-logo{
 	float: left;
 	padding-top: 25px;
@@ -17,10 +11,10 @@
 	display: inline-block;
 	width: 50px;
 	height: 50px;
-	background: url(../img/global-logo.png) no-repeat;
+	background: url(../img/logo.jpg) no-repeat;
     background-size: cover;
-}*/
-/*导航
+}
+/*导航*/
 .nav-global .nav-list{
 	float: right;
 	line-height: 28px;
@@ -51,7 +45,7 @@
 }
 .nav-aside>li>a{
 	font-size: 0;
-}*/
+}
 
 /*用户列表*/
 .nav-user{
@@ -192,8 +186,10 @@
     width: 61px;
 }
 .nav-cart>a{
-  display: block;
+  display: inline-block;
     position: absolute;
+    width: 30px;
+    height: 20px;
     left: 0;
     right: 0;
     top: 0;
@@ -244,8 +240,9 @@
 .nav-cart-wrapper{
     position: absolute;
     right: 0;
+    visibility: hidden;
     padding-top: 18px;
-    opacity: 1;
+    opacity: 0;
     top: 18px;
     z-index: 30;
     width: 360px;
@@ -373,7 +370,7 @@
 	font-size: 0;
 }
 .nav-cart-list .item-desc .attrs span{
-	position: relative; */
+	position: relative;
     display: inline-block;
     margin-right: 20px;
     font-size: 14px;
@@ -540,12 +537,35 @@
   transform: translate3d(0,0,0);
 }
 
-.nav-search {float: right; flex: 2; margin-left: 40px;}
+.nav-search {float: right; width: 250px; margin-right: 0;}
 .search-bar {position: relative;}
 .search-form {height: 32px;padding-left: 40px;padding-right: 15px;border: 1px solid rgba(0,0,0,.2);border-radius: 16px; box-sizing: border-box;background: #fff;box-shadow: inset 0 1px 6px 0 rgba(0,0,0,.05);}
 .search-box {width: 100%;height: 32px;font-size: 14px;font-weight: 700;color: #333;border: none;outline: none;background-color: transparent;}
-.search-bar .search-btn{position: absolute;top: -60px; left: 10px;height: 20px;width: 20px;border: none;cursor: pointer;background-size: contain;background-color: transparent;}
+.search-btn{position: absolute;top: 4px; left: 2px;height: 20px;width: 20px;border: none;cursor: pointer;background-size: contain;background-color: transparent;}
 
+/*轮播改渐隐始*/
+.carousel-fade .carousel-inner .carousel-item {
+    opacity: 0;
+    -webkit-transition-property: opacity;
+    -moz-transition-property: opacity;
+    -ms-transition-property: opacity;
+    -o-transition-property: opacity;
+    transition-property: opacity;
+    transition-duration: 1s;
+}
+.carousel-fade .carousel-inner .active {
+    opacity: 1;
+}
+.carousel-fade .carousel-inner .active.left,
+.carousel-fade .carousel-inner .active.right {
+    left: 0;
+    opacity: 0;
+}
+.carousel-fade .carousel-inner .carousel-item-next.carousel-item-left,
+.carousel-fade .carousel-inner .carousel-item-prev.carousel-item-right {
+    opacity: 1;
+}
+/*轮播改渐隐终*/
 
 
 

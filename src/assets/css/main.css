@@ -18,11 +18,6 @@ a {
 a:hover {
   color: #ffffff;
 }
-ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
 .ico_logo {
   filter: invert(100%);
 }
