@@ -11,7 +11,8 @@
                 </ul>
             </div>
             <div class="item-btns clearfix">
-                <span class="item-gray-btn"><a href="javascript:;" target="_blank">查看详情</a> </span><span class="item-blue-btn">加入购物车 </span>
+                <span class="item-gray-btn"><a href="javascript:;" target="_blank">查看详情</a> </span>
+                <span class="item-blue-btn" @click="addCarPanelHandle(item.sku_info[itemIndex])">加入购物车 </span>
             </div>
             <div class="item-price clearfix">
                 <i>¥</i><span>{{item.price}}</span>
@@ -39,6 +40,9 @@ export default {
    methods:{
        tableIndex (index) {
            this.itemIndex = index
+       },
+       addCarPanelHandle (data) {
+           this.$store.commit('addCarPanelData',data)
        }
    }
 }

@@ -11,7 +11,13 @@ let router = new VueRouter({
   routes: [                          //定义路由，数组 [] 里的每一个对象 {} 都是一个路由信息（一个页面）
     {
       path: '/home',                 //页面路径
-      component: home,               //注册组件，可以是多个，用 components:{}，对于 components 对象中的每个属性来说，其属性名就是自定义元素的名字，其属性值就是这个组件的选项对象。
+      component: home,               /*注册组件，可以是多个（变成复数形式），格式：
+                                      components:{
+                                        default:  home,       //default 是默认路径，对应的是 <router-view/>
+                                        slider: slider,        //slider 是自定义的名称，路径和键值最好一致， <router-view name="slider"/>，引入slider.vue页面 即可
+                                        ...
+                                      }，
+                                     对于 components 对象中的每个属性来说，其属性名就是自定义元素的名字，其属性值就是这个组件的选项对象。 */
       alias:'/index'                 //设置别名，可以使默认呈现为首页（否则必须点击导航才能到首页）
       /*
       children:[{

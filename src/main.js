@@ -1,6 +1,30 @@
+import Vue from 'vue'
+import App from './App'
+import router from './router'
+import store from './store'
+
+import '@/assets/css/app.css'
+
+import BootstrapVue from 'bootstrap-vue'
+
+Vue.use(BootstrapVue);
+
+Vue.config.productionTip = false
+
+
+new Vue({
+  el: '#app',
+  router,
+  store,
+  components: { App },
+  template: '<App/>'
+})
+
+/*
 import Vue from 'vue'                                   //引入 vue 库
 import App from './App'                                 //引入 APP 页面
 import router from '@/router'                           //引入路由库
+import store from '@/store'
 
 import '@/assets/css/app.css'                           //引入总的 css 文件，app.css
 
@@ -12,9 +36,10 @@ Vue.config.productionTip = false                        //Vue.config是一个对
 
 
 new Vue({                                               //实例化一个 Vue
-  el: '#app',                                           //意思是将所有视图放在id值为app这个dom元素中
-  router,                                               //使用路由，补全模式为：router: router, 如果两边名字相同，则可简写为 router
-  components: { App },                                  //告知当前页面想使用App这个组件
-  template: '<App/>'                                    //告知页面这个组件用这样的标签来包裹着,并且使用它
+    el: '#app',                                           //意思是将所有视图放在id值为app这个dom元素中
+    router,                                               //使用路由，补全模式为：router: router, 如果两边名字相同，则可简写为 router
+    store,
+    components: { App },                                  //告知当前页面想使用App这个组件
+    template: '<App/>'                                    //告知页面这个组件用这样的标签来包裹着,并且使用它
 })
-
+*/

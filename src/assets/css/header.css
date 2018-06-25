@@ -286,13 +286,10 @@
 }
 
 .nav-cart-wrapper {
-  display: none;
   position: absolute;
   right: 0;
   padding-top: 18px;
-  opacity: 0;
-  visibility: hidden;
-  top: -3000px;
+  top: 18px;
   z-index: 30;
   width: 360px;
 }
@@ -491,6 +488,8 @@
   border-radius: 0 0 8px 8px;
   box-shadow: inset 0 -1px 0 rgba(255, 255, 255, .5), 0 -3px 8px rgba(0, 0, 0, .04);
   background: linear-gradient(#fafafa, #f5f5f5);
+  -webkie-box-sizing:content-box;
+  box-sizing: content-box;
 }
 
 .nav-cart-list .nav-cart-total p {
