@@ -326,8 +326,8 @@
 
 .nav-cart-list .empty {
   overflow: hidden;
-  height: 134px;
   padding-top: 180px;
+  padding-bottom: 20px;
   background: url(../img/cart-empty.png) center 90px no-repeat;
   background-size: auto 62px;
   text-align: center;

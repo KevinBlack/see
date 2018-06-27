@@ -15,13 +15,14 @@
         </div>
       </div>
     </div>
+    <prompt></prompt>
   </div>
 </template>
 
 <script>
 import mzhf from '@/lib/newGoodsData'
-
 import shopItem from '@/components/shop-item'
+import prompt from '@/components/prompt'
 
 export default {
     data(){
@@ -30,7 +31,8 @@ export default {
         }
     },
     components:{
-        shopItem
+        shopItem,
+        prompt
     }
 }
 </script>
