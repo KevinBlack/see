@@ -5,12 +5,12 @@ Vue.use(Vuex)
 
 let store = new Vuex.Store({
     state:{
-        carPaneData:[]
+        carPanelData:[]
     },
     mutations:{
-        addCarPaneData (state,data) {
+        addCarPanelData (state,data) {
             let bOff = true
-            state.carPaneData.forEach((goods)=>{
+            state.carPanelData.forEach((goods)=>{
                 if(goods.sku_id === data.sku_id){
                     goods.count++
                     bOff = false
@@ -19,7 +19,7 @@ let store = new Vuex.Store({
             if (bOff) {
                 let goodsData = data
                 Vue.set(goodsData,'count',1)
-                state.carPaneData.push(goodsData)
+                state.carPanelData.push(goodsData)
             }
         }
     }
