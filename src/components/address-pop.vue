@@ -68,7 +68,7 @@
                     <input type="checkbox" class="hide">
                     <span class="blue-checkbox" :class="{'blue-checkbox-on':receive.default}" @click="checkDefault"></span>设为默认
                   </div>
-                  <div class="dialog-blue-btn big-main-btn js-verify-address" @click="submitReceiveHandle">
+                  <div class="dialog-blue-btn big-main-btn js-verify-address" :class="{'disabled-btn':!isRight}" @click="submitReceiveHandle">
                     <a>保存</a>
                   </div>
                 </div>

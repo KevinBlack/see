@@ -106,7 +106,7 @@ export default {
           let a = el.offsetHeight
           el.a = a
           el.style.transform = 'translate3d(0,0,0)'
-          document.getElementsByName('mask-item')[0].style.transform = 'translate3d(0,0,0)'
+          document.getElementsByClassName('mask-item')[0].style.transform = 'translate3d(0,0,0)'
       },
       afterEnter () {
           this.ball.show = false
@@ -117,10 +117,10 @@ export default {
 </script>
 
 <style scoped>
-.ball-enter-active {
-    transition: 1s;
-}
-.ball-enter-active .mask-item {
-    transition: 1s;
-}
+    .ball-enter-active{
+        transition: 1s;
+    }
+    .ball-enter-active .mask-item{
+        transition: 1s;
+    }
 </style>
