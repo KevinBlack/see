@@ -1,6 +1,6 @@
 <template>
     <li class="nav-cart" @mouseenter="showCarHandle" @mouseleave="hideCarHandle">
-        <a href="javascript:;" class="ball-rect">购物车</a>
+        <router-link to="/cart" class="ball-rect">购物车</router-link>
         <!--根据class改变颜色-->
         <span class="cart-empty-num" :class="{'cart-num':count>0}">
 			<i>{{count}}</i>
@@ -43,7 +43,7 @@
                         <p>共 <strong class="ng-binding">{{count}}</strong> 件商品</p>
                         <h5>合计：<span class="price-icon">¥</span><span class="price-num ng-binding" ng-bind="cartMenu.totalPrice">{{totle}}</span></h5>
                         <h6>
-                            <a ng-href="http://www.smartisan.com/shop/#/cart" class="nav-cart-btn" href="http://www.smartisan.com/shop/#/cart">去购物车</a>
+                            <router-link class="nav-cart-btn" to="/Cart">去购物车</router-link>
                         </h6>
                     </div>
                 </div>
@@ -56,7 +56,7 @@
             v-on:after-enter="afterEnter"
             v-bind:css="true"
         >
-            <div class="addcart-mask" v-show="ball.show">
+            <div class="addcart-mask ball-enter-active" v-show="ball.show">
                 <img class="mask-item" />
             </div>
         </transition>
@@ -117,10 +117,10 @@ export default {
 </script>
 
 <style scoped>
-.ball-enter-active{
+.ball-enter-active {
     transition: 1s;
 }
-.ball-enter-active .mask-item{
+.ball-enter-active .mask-item {
     transition: 1s;
 }
 </style>

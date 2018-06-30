@@ -1,5 +1,5 @@
 <template>
-	<div id="main" class="">
+	<div id="main">
 		<div class="content page-order-checkout checkout">
 			<div class="js-checkout-address-box">
 				<div class="gray-box clear">
@@ -9,18 +9,18 @@
 					<div class="box-inner js-checkout-address-panel ">
 						<div class="address-common-table js-multiple-address-panel">
 							<ul class="address-item-list clear js-address-item-list">
-								<li class="js-choose-address " :class="{'selected-address-item':info.checked}" v-for="info,index in receiveInfo" @click="selectedAddress(info)">
+								<li class="js-choose-address" :class="{'selected-address-item':receiveIndex==index}" v-for="receive,index in receiveInfo" @click="chooseReceive(index)">
 									<div class="address-item">
-										<div class="name-section"> {{info.name}} </div>
-										<div class="mobile-section">{{info.phone}}</div>
-										<div class="detail-section"> {{info.province}} {{info.city}} {{info.county}}<br> {{info.add}} </div>
+										<div class="name-section">{{receive.name}}</div>
+										<div class="mobile-section">{{receive.phone}}</div>
+										<div class="detail-section">{{receive.province}} {{receive.city}} {{receive.county}}<br> {{receive.add}} </div>
 									</div>
 									<div class="operation-section">
 										<span class="update-btn js-edit-address">修改</span>
-										<span class="delete-btn js-delete-address" data-id="765375">删除</span>
+										<span class="delete-btn js-delete-address">删除</span>
 									</div>
 								</li>
-								<li class="add-address-item js-add-address" @click="addReceive">
+								<li class="add-address-item js-add-address" @click="showPop">
 									<p>使用新地址</p>
 								</li>
 							</ul>
@@ -36,25 +36,24 @@
 					<p class="invoice-detail"> 发票类型：电子发票 </p>
 					<div class="invoice-detail"> 发票抬头：
 						<div class="radio-box">
-							<label> 
-										<input type="radio" class="hide"> 
-										<span class="blue-radio" :class="{'blue-radio-on':invoice.personal}" @click="checkedInvoice(true)"><a></a></span>  个人
-									</label>
-							<label> 
-										<input type="radio" class="hide"> 
-										<span class="blue-radio" :class="{'blue-radio-on':!invoice.personal}" @click="checkedInvoice(false)"><a></a></span>  单位
-									</label>
+							<label>
+								<input type="radio" class="hide">
+								<span class="blue-radio" :class="{'blue-radio-on':invoice.prosonal}" @click="checkedInvoice(true)"><a></a></span>  个人
+							</label>
+							<label>
+								<input type="radio" class="hide">
+								<span class="blue-radio" :class="{'blue-radio-on':!invoice.prosonal}" @click="checkedInvoice(false)"><a></a></span>  单位
+							</label>
 						</div>
-						<div class="module-form-row form-item js-invoice-title" v-show="!invoice.personal">
+						<div class="module-form-row form-item fn-hide js-invoice-title" v-if="!invoice.prosonal">
 							<div class="module-form-item-wrapper no-icon small-item">
 								<i v-show="!invoice.name">请填写公司发票抬头</i>
 								<input type="text" class="js-verify" v-model="invoice.name">
-								<div class="verify-error" v-show="!invoice.name">必填</div>
+								<div class="verify-error" v-show="!invoice.name"> 必填</div>
 							</div>
 						</div>
 					</div>
-					<p class="invoice-detail">发票内容：购买商品明细</p>
-					<p class="invoice-label"> 电子发票是税务局认可的有效收付款凭证，可作为售后服务凭据。电子发票打印后可以用于企业报销。 </p>
+					<p class="invoice-detail">发票内容：购买商品明细</p> <p class="invoice-label"> 电子发票是税务局认可的有效收付款凭证，可作为售后服务凭据。电子发票打印后可以用于企业报销。 </p>
 				</div>
 			</div>
 			<div class="gray-box">
@@ -70,139 +69,135 @@
 					</div>
 					<div class="cart-table">
 						<div class="cart-group js-cart-group">
-							<div class="cart-items" v-for="item,index in carPanelData">
+							<div class="cart-items" v-for="item,index in checkedGoods">
 								<div class="items-thumb">
 									<a href="javascript:;" target="_blank"><img :src="item.ali_image+'?x-oss-process=image/resize,w_80/quality,Q_100/format,webp'"></a>
 								</div>
 								<div class="name hide-row">
 									<div class="name-cell">
-										<a href="http://www.smartisan.com/shop/#/item/100027501" :title="item.title+'（'+item.spec_json.show_name+'）'" target="_blank">{{item.title}}（{{item.spec_json.show_name}}）</a>
+										<a href="javascript:;" :title="item.title+'（'+item.spec_json.show_name+'）'" target="_blank">{{item.title}}（{{item.spec_json.show_name}}）</a>
 									</div>
 								</div>
 								<div class="subtotal">
-									<div class="subtotal-cell"> ¥ {{item.price*item.count}}.00 </div>
+									<div class="subtotal-cell">  ¥ {{item.count*item.price}}.00  </div>
 								</div>
 								<div class="goods-num">{{item.count}}</div>
-								<div class="price">¥ {{item.price}}.00</div>
+								<div class="price">¥ {{item.price}}</div>
 							</div>
 						</div>
 					</div>
-	
+
 				</div>
 				<div class="box-inner">
 					<div class="order-discount-line">
-						<p> 商品总计： <span>¥ {{checkedTotle}}.00</span> </p>
+						<p> 商品总计： <span>¥ {{checkedPrice}}.00</span> </p>
 						<p> 运费： <span>+ ¥ {{freight}}.00</span> </p>
-						<!--<p class="discount-line js-discount-cash"> <em>现金券</em>： <span> - 0 </span> </p>-->
+						<p class="discount-line js-discount-cash"> <em>现金券</em>： <span> - 0 </span> </p>
 					</div>
 				</div>
 				<div class="box-inner">
 					<div class="last-payment clear">
-						<span class="jianguo-blue-main-btn big-main-btn payment-blue-bt fn-right js-checkout" @click="submitOrderHandle"> <a>提交订单</a> </span> <span class="prices fn-right">应付金额： <em>¥ {{checkedTotle+freight}}.00</em></span>
+						<span class="jianguo-blue-main-btn big-main-btn payment-blue-bt fn-right js-checkout" @click="submitOrderHandle"> <a>提交订单</a> </span>
+						<span class="prices fn-right">应付金额： <em>¥ {{checkedPrice+freight}}.00</em></span>
 					</div>
 				</div>
 			</div>
 		</div>
-		<address-pop v-if="popShow" :oldReceive="oldReceive" @close="closePop"></address-pop>
+		<address-pop v-if="popShow" @close="closePop"></address-pop>
 	</div>
 </template>
 
 <script>
-  import addressPop from '@/components/address-pop'
-	export default {
-	  data () {
-	    return {
-	      receiveInfo: [],
-	      invoice: {
-	        personal: true,
-	        name: ''
-	      },
-	      popShow: false,
-	      oldReceive: null
-	    }
-	  },
-	  created () {
-	    this.$store.state.receiveInfo.forEach((receive,index) => {
-	      if(receive.default){
-	        receive.checked = true
-	        this.$store.state.receiveInfo.unshift(this.$store.state.receiveInfo.splice(index,1)[0])
-	      }else{
-	        receive.checked = false
-	      }
-	    })
-	    this.receiveInfo = this.$store.state.receiveInfo
-	  },
-	  computed: {
-	    carPanelData () {
-        return this.$store.state.provisionalOrder.items
-      },
-      checkedTotle () {
-        return this.$store.state.provisionalOrder.totlePrice
-      },
-      freight () {
-        let freight = 8
-        if(this.$store.state.provisionalOrder.totlePrice>88)
-        freight = 0
-        return freight
-      }
-	  },
-    components: {
-      addressPop
-    },
-    methods: {
-      selectedAddress (info) {
-        if(!info.checked){
-          this.receiveInfo.forEach((receive) => {
-            receive.checked = false
-          })
-          info.checked = true
-        }
-      },
-      checkedInvoice (boole) {
-        this.invoice.personal = boole
-      },
-      submitOrderHandle () {
-        if(!this.invoice.personal&&!this.invoice.name) return
-        let receiveInfo = this.receiveInfo.filter((item) => {
-          return item.checked
-        })[0]
-        let invoiceTitle = ""
-        if(this.invoice.personal){
-          invoiceTitle = "个人"
-        }else{
-          invoiceTitle = this.invoice.name
-        }
-        let iDate = new Date();
-        let month = iDate.getMonth() + 1;
-        let strDate = iDate.getDate();
-        if (month >= 1 && month <= 9) {
-            month = "0" + month;
-        }
-        if (strDate >= 0 && strDate <= 9) {
-            strDate = "0" + strDate;
-        }
-        let data = {
-          orderId: iDate.getTime(),
-          goodsData: this.carPanelData,
-          price: this.checkedTotle,
-          freight: this.freight,
-          invoiceTitle: invoiceTitle,
-          receiveInfo: receiveInfo,
-          iDate: iDate.getFullYear() + '-' + month + '-' + strDate,
-          isPay: false
-        }
-        this.$store.commit('submitOrder',data)
-        this.$router.push({name: 'Payment', query: {orderId:data.orderId}})
-      },
-      addReceive () {
-        this.oldReceive = null
-        this.popShow = true
-      },
-      closePop () {
-        this.popShow = false
-      }
-    }
+import addressPop from '@/components/address-pop'
+export default {
+    data () {
+        return {
+            receiveIndex:0,
+			popShow: false,
+			invoice: {
+                prosonal: true,
+				name: ''
+			}
+		}
+	},
+	components: {
+        addressPop
+	},
+	created () {
+        this.$store.state.receiveInfo.forEach((receive,index) => {
+            if (receive.default) {
+                this.receiveIndex = index
+				return
+			}
+		})
+	},
+    computed: {
+        checkedGoods () {
+            return this.$store.getters.checkedGoods
+		},
+        checkedPrice () {
+            return this.$store.getters.checkedPrice
+        },
+		freight () {
+            let freight = 8
+			if (this.checkedPrice >88) {
+                freight = 0
+			}
+			return freight
+		},
+        receiveInfo () {
+            return this.$store.state.receiveInfo
+		}
+	},
+	methods:{
+        chooseReceive (index) {
+            this.receiveIndex = index
+		},
+        closePop () {
+            this.popShow = false
+            this.$store.state.receiveInfo.forEach((receive,index) => {
+                if (receive.default) {
+                    this.receiveIndex = index
+                    return
+                }
+            })
+		},
+        showPop () {
+            this.popShow = true
+        },
+		checkedInvoice (boole) {
+            this.invoice.prosonal = boole
+		},
+		submitOrderHandle () {
+            if (!this.invoice.prosonal && !this.invoice.name) return
+			let receiveInfo = this.receiveInfo[this.receiveIndex]
+			if (this.invoice.prosonal) {
+                this.invoice.name = '个人'
+			}
+			let iDate = new Date()
+			let month = iDate.getMonth()
+			let day = iDate.getDate()
+			if (month >=1 && month <=9) {
+                month = '0' + month
+			}
+            if (day >=1 && day <=9) {
+                day = '0' + day
+            }
+            let data = {
+                orderId: iDate.getTime(),
+				goodsData: this.checkedGoods,
+				price: this.checkedPrice,
+				freight: this.freight,
+				invoiceName: this.invoice.name,
+				iDate: iDate.getFullYear() + '-' + month + '-' + day,
+                receiveInfo: receiveInfo,
+				isPay: false
+			}
+			this.$store.commit('sunmitOrder',data)
+			this.$router.push({name: 'Payment',query: {orderId: data.orderId}})
+		}
 	}
+}
 </script>
 
 <style>
@@ -251,9 +246,10 @@
 	font-size: 18px;
     font-weight: 400;
     color: #626262;
+	line-height: 60px;
 }
 .checkout .gray-box .columns-title h2{
-	float: left; 
+	float: left;
 }
 .checkout .address-common-table .address-item-list{
 	padding: 30px 13px 0;
@@ -477,6 +473,7 @@
 .checkout .invoice-box .module-form-item-wrapper input{
 	width: 310px;
     padding-left: 11px;
+	margin-top: 0;
 }
 .checkout .invoice-box .invoice-label{
 	position: relative;
@@ -649,9 +646,10 @@
 }
 .checkout .big-main-btn a{
 	height: 42px;
-  line-height: 42px;
-  width: 136px;
-  font-size: 16px;
+    line-height: 42px;
+    width: 136px;
+    font-size: 16px;
+	color: #fff;
 }
 .jianguo-blue-main-btn:hover a{
 	box-shadow: inset 0 1px 1px #7696DE, inset 0 0 2px #627DCA, inset 0 -2px 3px #5A77C7, inset 0 0 100px rgba(48,77,147,.4);

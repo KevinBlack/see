@@ -44,7 +44,7 @@
 						<div class="gray-sub-title cart-title">
 							<span class="date">{{order.iDate}}</span>
 							<span class="order-id"> 订单号： <a href="javascript:;">{{order.orderId}}</a> </span>
-							<span class="order-detail"><router-link :to="{name: 'Payment', query: {orderId:order.orderId}}">查看详情&gt;</router-link> </span> <span class="sub-total">应付总额</span>
+							<span class="order-detail"><router-link :to="{name: 'Payment',query: {orderId:order.orderId}}">查看详情&gt;</router-link> </span> <span class="sub-total">应付总额</span>
 							<span class="operation">商品操作</span>
 							<span class="num">数量</span>
 							<span class="price">单价</span>
@@ -86,13 +86,13 @@
 </template>
 
 <script>
-	export default {
-	  computed: {
-	    orderData () {
-	      return this.$store.state.orderData
-	    }
-	  }
+export default {
+  computed: {
+	orderData () {
+	  return this.$store.state.orderData
 	}
+  }
+}
 </script>
 
 <style>

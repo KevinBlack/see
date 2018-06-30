@@ -6,12 +6,12 @@
 				<div class="gallery">
 					<div class="thumbnail">
 						<ul>
-							<li :class="{'on':index==0}" key="index" v-for="img,index in itemsInfo.ali_images"><img :src="img+'?x-oss-process=image/resize,w_54/quality,Q_90/format,webp'"></li>
+							<li :class="{'on':index==imgIndex}" @click="tableImg(index)" v-for="img,index in itemsInfo.ali_images"><img :src="img+'?x-oss-process=image/resize,w_54/quality,Q_90/format,webp'"></li>
 						</ul>
 					</div>
 					<div class="thumb">
 						<ul>
-							<li :class="{'on':index==0}" key="index" v-for="img,index in itemsInfo.ali_images"><img :src="img+'?x-oss-process=image/resize,w_440/quality,Q_90/format,webp'"></li>
+							<li :class="{'on':index==imgIndex}" v-for="img,index in itemsInfo.ali_images"><img :src="img+'?x-oss-process=image/resize,w_440/quality,Q_90/format,webp'"></li>
 						</ul>
 					</div>
 				</div>
@@ -31,7 +31,7 @@
 						<span class="params-name">颜色</span>
 						<ul class="params-colors">
 							<li :class="{'cur':color.id==$route.query.itemId}" v-for="color,index in itemsInfo.sku_list">
-								<router-link :to="{name: 'Item', query: {itemId:color.id}}" :title="color.color"><i><img :src="'http://img01.smartisanos.cn/'+color.image+'20X20.jpg'"></i></router-link>
+								<router-link :to="{name: 'Item',query: {itemId:color.id}}" :title="color.color"><i><img :src="'http://img01.smartisanos.cn/'+color.image+'20X20.jpg'"></i></router-link>
 							</li>
 						</ul>
 					</div>
@@ -49,80 +49,78 @@
 				<div class="sku-status">
 					<div class="cart-operation-wrapper clearfix">
 						<span class="blue-title-btn js-add-cart" @click="addCarPanelHandle"><a>加入购物车</a></span>
-						<span class="gray-title-btn" @click="checkOutHandle"><a>现在购买</a></span>
+						<span class="gray-title-btn"><a>现在购买</a></span>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<prompt v-if="maxCount"></prompt>
+	<prompt></prompt>
 </div>
 </template>
 
 <script>
-import itemsData from '@/lib/newItemsData.js'
+import itemsData from '@/lib/newItemsData'
 import prompt from '@/components/prompt'
+
 export default {
   data () {
     return {
-      itemsList: itemsData,
-      count: 1
+        itemsData,
+		itemId: this.$route.query.itemId,
+		imgIndex: 0,
+		count: 1
     }
+  },
+  watch: {
+    '$route.query.itemId' () {
+        this.itemId = this.$route.query.itemId,
+        this.imgIndex = 0//每次都从第一个缩略图开始
+	}
   },
   computed: {
     itemsInfo () {
-      let itemsInfo = this.itemsList.filter((item) => {
-        return item.sku_id == this.$route.query.itemId
+      let itemsInfo = this.itemsData.filter((item) => {
+        return Number(item.sku_id) === Number(this.itemId)
       })[0]
       return itemsInfo
-    },
-    maxCount () {
-      return this.$store.state.maxOff
     }
   },
   methods: {
-    addCount () {
-        this.count++
-      if(this.count>this.itemsInfo.limit_num){
-        this.count = this.itemsInfo.limit_num
-        this.$store.commit('alertPrompt')
+      tableImg (index) {
+          this.imgIndex = index
+	  },
+      addCarPanelHandle () {
+          let itemData = {info:this.itemsInfo,count: this.count}
+          this.$store.commit('addCarPanelData',itemData)
+      },
+	  addCount () {
+          this.count ++
+		  if (this.count > this.itemsInfo.limit_num) {
+              this.count = this.itemsInfo.limit_num
+		  }
+	  },
+      subCount () {
+          this.count --
+          if (this.count < 1) {
+              this.count = 1
+          }
       }
-    },
-    subCount () {
-        this.count--
-      if(this.count<1){
-        this.count = 1
-      }
-    },
-    checkOutHandle () {
-      let itemsInfo = this.itemsInfo
-      itemsInfo.count = this.count
-      let provisionalOrder = {
-        totlePrice: this.count * this.itemsInfo.price,
-        totleCount: this.count,
-        items: [itemsInfo]
-      }
-      this.$store.commit('checkOut',provisionalOrder)
-      this.$router.push({name: 'Checkout'})
-    },
-    addCarPanelHandle () {
-      let data = [this.itemsInfo,this.count]
-      this.$store.commit('addCarPanelData',data)
-    }
   },
-  components: {
-    prompt
+  components:{
+	prompt
   }
 }
 </script>
 
 <style>
 .item .item-box{
-	width: 1098px;
+  width: 1098px;
   padding: 60px;
+  margin-top: 50px;
   margin-bottom: 20px;
   display: table;
-	overflow: hidden;
+  overflow: hidden;
   background: #fff;
   border-radius: 8px;
   border: 1px solid #dcdcdc;
@@ -143,6 +141,7 @@ export default {
 .thumb, .thumbnail{
 	display: table-cell;
     vertical-align: middle;
+
 }
 .thumbnail li{
     width: 54px;
