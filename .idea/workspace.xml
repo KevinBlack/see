@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="df83487d-9076-4f36-8bc0-6ac386efb218" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/address-pop.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/address-pop.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/car-panel.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/car-panel.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/account.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/account.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/nav.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/nav.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -22,7 +19,7 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/store/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-891">
+            <state relative-caret-position="-783">
               <caret line="125" column="52" selection-start-line="125" selection-start-column="52" selection-end-line="125" selection-end-column="52" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
@@ -31,7 +28,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="car-panel.vue" pinned="false" current-in-tab="true">
+      <file leaf-file-name="nav.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/lib/nav.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="2" column="14" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="car-panel.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/car-panel.vue">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="112">
@@ -115,6 +121,7 @@
         <option value="$PROJECT_DIR$/src/views/account.vue" />
         <option value="$PROJECT_DIR$/src/store/index.js" />
         <option value="$PROJECT_DIR$/src/components/car-panel.vue" />
+        <option value="$PROJECT_DIR$/src/lib/nav.js" />
       </list>
     </option>
   </component>
@@ -178,6 +185,12 @@
               <item name="see" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="see" type="b2602c69:ProjectViewProjectNode" />
+              <item name="see" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="see" type="b2602c69:ProjectViewProjectNode" />
@@ -283,12 +296,12 @@
       <workItem from="1529930240911" duration="2097000" />
       <workItem from="1530080879718" duration="60217000" />
       <workItem from="1530503320098" duration="3000" />
-      <workItem from="1530512031137" duration="1036000" />
+      <workItem from="1530512031137" duration="1156000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="109882000" />
+    <option name="totallyTimeSpent" value="110002000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="752" y="23" width="1920" height="977" extended-state="0" />
@@ -326,13 +339,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/components/car-panel.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="810">
-          <caret line="54" column="29" selection-start-line="54" selection-start-column="24" selection-end-line="54" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/views/account/address.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2100">
@@ -673,16 +679,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/store/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-891">
-          <caret line="125" column="52" selection-start-line="125" selection-start-column="52" selection-end-line="125" selection-end-column="52" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/assets/css/cart.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -694,6 +690,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="112">
           <caret line="98" column="34" lean-forward="true" selection-start-line="98" selection-start-column="34" selection-end-line="98" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/store/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-783">
+          <caret line="125" column="52" selection-start-line="125" selection-start-column="52" selection-end-line="125" selection-end-column="52" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lib/nav.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="14" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
         </state>
       </provider>
     </entry>

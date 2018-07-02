@@ -1,6 +1,6 @@
 let navBtn = [{
   'id':1,
-  'name':'美妆护肤',
+  'name':'手机周边',
   'road':'/mzhf'
 },
   {
