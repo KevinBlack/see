@@ -35,7 +35,7 @@
     width: 1220px;
     min-height: 600px;
     padding: 0 0 25px;
-    margin: 0 auto;
+    margin: 30px auto 0;
 }
 .account-wrapper{
 	position: relative;

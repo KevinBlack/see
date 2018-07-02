@@ -51,7 +51,7 @@
         </div>
         <transition
             name="ball"
-            v-on:befor-enter="beforeEnter"
+            v-on:before-enter="beforeEnter"
             v-on:enter="enter"
             v-on:after-enter="afterEnter"
             v-bind:css="true"
@@ -100,7 +100,7 @@ export default {
           let y = rect.top + rect.height / 2 - rectEl.top + 5 - 16
           el.style.transform = 'translate3d(0,'+ y +'px,0)'
           ball.style.transform = 'translate3d(-'+ x +'px,0,0)'
-          ball.src = this.ball.img
+          ball.src = this.ball.img +'?x-oss-process=image/resize,w_15/quality,Q_30/format,webp'
       },
       enter (el) {
           let a = el.offsetHeight
@@ -118,9 +118,9 @@ export default {
 
 <style scoped>
     .ball-enter-active{
-        transition: 1s;
+        transition: .3s cubic-bezier(.32,.89,.72,1.32);
     }
     .ball-enter-active .mask-item{
-        transition: 1s;
+        transition: .3s cubic-bezier(0,0,1,1);
     }
 </style>

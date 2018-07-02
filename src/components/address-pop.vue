@@ -51,8 +51,8 @@
                         <option :value="city.area_id" v-for="city,index in cityList">{{city.area_name}}</option>
                       </select>
                     </div>
-                    <div class="form-item-v3 select-item district-wrapper fn-right form-focus-item" v-model="receive.countyId">
-                      <select class="city select-city js-form-city js-verify">
+                    <div class="form-item-v3 select-item district-wrapper fn-right form-focus-item">
+                      <select class="city select-city js-form-city js-verify" v-model="receive.countyId">
                         <option value="0">请选择区县</option>
                         <option :value="county.area_id" v-for="county,index in countyList">{{county.area_name}}</option>
                       </select>
