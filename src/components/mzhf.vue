@@ -24,6 +24,7 @@ import mzhf from '@/lib/newGoodsData'
 import shopItem from '@/components/shop-item'
 import prompt from '@/components/prompt'
 
+
 export default {
     data(){
         return{

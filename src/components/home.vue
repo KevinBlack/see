@@ -5,11 +5,11 @@
         <div class="container">
           <ul class="nav-list">
             <li><a href="javascript:;">首页</a></li>
-            <li><a href="javascript:;">手机</a></li>
-            <li><a href="javascript:;">“足迹系列”手感膜</a></li>
-            <li><a href="javascript:;">官方配件</a></li>
-            <li><a href="javascript:;">周边产品</a></li>
-            <li><a href="javascript:;">第三方配件</a></li>
+            <li><a href="javascript:;">本周热卖</a></li>
+            <li><a href="javascript:;">“足迹系列”活动</a></li>
+            <li><a href="javascript:;">新品上架</a></li>
+            <li><a href="javascript:;">折扣专区</a></li>
+            <li><a href="javascript:;">好物精选</a></li>
             <li><a href="javascript:;">全部商品</a></li>
             <li><a href="javascript:;">服务</a></li>
           </ul>
@@ -50,16 +50,21 @@
       </b-carousel-slide>
 
     </b-carousel>
+    <hot-item></hot-item>
   </div>
 </template>
 
 <script>
-  export default {
+import hotItem from '@/components/hot-item'
+export default {
     data () {
       return {
         slide: 0,
         sliding: null
       }
+    },
+    components:{
+        hotItem
     },
     methods: {
       onSlideStart (slide) {
