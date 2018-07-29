@@ -38,7 +38,7 @@ Vue.config.productionTip = false                        //Vue.config是一个对
 new Vue({                                               //实例化一个 Vue
     el: '#app',                                           //意思是将所有视图放在id值为app这个dom元素中
     router,                                               //使用路由，补全模式为：router: router, 如果两边名字相同，则可简写为 router
-    store,
+    store,                                                //使用 vuex
     components: { App },                                  //告知当前页面想使用App这个组件
     template: '<App/>'                                    //告知页面这个组件用这样的标签来包裹着,并且使用它
 })
